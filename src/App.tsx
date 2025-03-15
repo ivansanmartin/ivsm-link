@@ -26,11 +26,11 @@ function App() {
 
     try {
       setLoading(true);
-      const response = await fetch("http://localhost:8080/api/v1/url-shortener", {
+      const response = await fetch("", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          "X-API-Key": import.meta.env.VITE_URL_SHORTENER_API_KEY
+          "X-API-Key": "import.meta.env.VITE_URL_SHORTENER_API_KEY"
         },
         body: JSON.stringify({ "original_url": inputValue })
       });
