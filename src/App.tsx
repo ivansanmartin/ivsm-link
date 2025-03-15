@@ -41,7 +41,7 @@ function App() {
               </div>
             </div>
             
-            <div className="card mt-4 shadow-sm border-0 rounded-4" id="resultsCard">
+            {/* <div className="card mt-4 shadow-sm border-0 rounded-4" id="resultsCard">
               <div className="card-body p-4">
                 <h5 className="card-title mb-3">Your shortened link</h5>
                 <div className="input-group mb-3">
@@ -55,7 +55,7 @@ function App() {
                   <a href="#" className="btn btn-sm btn-light">Create new</a>
                 </div>
               </div>
-            </div>
+            </div> */}
             
             <div className="row row-cols-1 row-cols-md-3 g-4 mt-4 text-center">
               <div className="col">
