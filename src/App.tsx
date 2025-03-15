@@ -153,6 +153,10 @@ function App() {
             
           </div>
         </div>
+
+        <footer className='d-flex justify-content-center mt-5'>
+          <p className='text-secondary'>Made by <a href="https://ivansanmartin.dev" target='_blank'>Iván San Martín</a></p>
+        </footer>
       </main>
     </>
   )
