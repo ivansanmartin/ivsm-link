@@ -1,6 +1,3 @@
-
-# For build node project
-
 FROM node:20-alpine AS build
 
 WORKDIR /app
@@ -17,7 +14,6 @@ COPY public ./public
 
 RUN npm run build
 
-# Nginx
 
 FROM cgr.dev/chainguard/nginx:latest
 
