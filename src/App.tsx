@@ -28,11 +28,10 @@ function App() {
     try {
       setCopied(false);
       setLoading(true);
-      const response = await fetch("https://ivsm.link/api/v1/url-shortener", {
+      const response = await fetch("", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          "X-API-Key": "key_1DemacIxkQ_1da8OnopRN-_Y4lqBnOzEEQ2PFJwaR0g"
         },
         body: JSON.stringify({ "original_url": inputValue })
       });
