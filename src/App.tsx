@@ -65,7 +65,7 @@ function App() {
             
             <div className="text-center mb-5">
               <h1 className="display-4 fw-bold text-primary">Ivsm-Link | URL-Shortener</h1>
-              <p className="lead text-muted">Shorten your links in seconds</p>
+              <p className="lead text-muted">Shorten your links in seconds {import.meta.env.VITE_URL_SHORTENER_HOST}</p>
             </div>
             
             <div className="card shadow-sm border-0 rounded-4">
