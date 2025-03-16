@@ -16,6 +16,7 @@ function App() {
   const [inputValue, setInputValue] = useState("");
   const [responseApi, setResponseApi] = useState<ApiResponse | null>(null);
   const [isLoading, setLoading] = useState(false);
+  const [isCopied, setCopied] = useState(false);
 
   const handleInputChange = (event: any) => {
     setInputValue(event.target.value);
@@ -25,12 +26,13 @@ function App() {
     event.preventDefault();
 
     try {
+      setCopied(false);
       setLoading(true);
-      const response = await fetch("", {
+      const response = await fetch(import.meta.env.VITE_URL_SHORTENER_HOST, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          "X-API-Key": "import.meta.env.VITE_URL_SHORTENER_API_KEY"
+          "X-API-Key": import.meta.env.VITE_URL_SHORTENER_API_KEY
         },
         body: JSON.stringify({ "original_url": inputValue })
       });
@@ -41,11 +43,18 @@ function App() {
   
       const data = await response.json();
       setResponseApi(data);
-      setLoading(false)
+      setLoading(false);
+
     } catch (error) {
       console.error("Error al acortar la URL:", error);
     }
   };
+
+  const onClickCopyButton = async () => {
+    await navigator.clipboard.writeText(responseApi?.data?.short_url ? responseApi?.data?.short_url : "https://ivsm.link");
+    setCopied(true);
+
+  }
 
 
   return (
@@ -108,49 +117,45 @@ function App() {
             }
             
             {
-              responseApi?.ok && 
+              !isLoading && (
+              responseApi?.ok &&
               <div className="card mt-4 shadow-sm border-0 rounded-4" id="resultsCard">
                 <div className="card-body p-4">
                   <h5 className="card-title mb-3">Your shortened link</h5>
                   <div className="input-group mb-3">
                     <input type="text" className="form-control bg-light" id="shortUrl" readOnly value={responseApi?.data?.short_url} />
-                    <button className="btn btn-outline-primary" type="button" id="copyButton">
-                      Copy
+                    <button className="btn btn-outline-primary" onClick={onClickCopyButton} type="button" id="copyButton">
+                      {
+                        isCopied ? (
+                          "Copied"
+                        )
+                        :
+                        "Copy"
+                      }
                     </button>
                   </div>
                   <div className="d-flex justify-content-between align-items-center">
                     <span className="text-muted small">Created just now</span>
-                    <a href="#" className="btn btn-sm btn-light">Create new</a>
                   </div>
                 </div>
               </div>
+              )
             
             }
 
-            <div className="row row-cols-1 row-cols-md-3 g-4 mt-4 text-center">
-              <div className="col">
-                <div className="p-3">
-                  <i className="bi bi-lightning-charge fs-2 text-primary mb-3"></i>
-                  <h5>Fast & Reliable</h5>
-                  <p className="text-muted small">Shorten URLs instantly with guaranteed uptime</p>
-                </div>
-              </div>
-              <div className="col">
-                <div className="p-3">
-                  <i className="bi bi-shield-check fs-2 text-primary mb-3"></i>
-                  <h5>Safe & Secure</h5>
-                  <p className="text-muted small">Your data is encrypted and never shared</p>
-                </div>
-              </div>
-              <div className="col">
-                <div className="p-3">
-                  <i className="bi bi-graph-up fs-2 text-primary mb-3"></i>
-                  <h5>Click Analytics</h5>
-                  <p className="text-muted small">Track performance with detailed statistics</p>
+            <div className='d-flex justify-content-center w-100'>
+              <div className="g-4 mt-4 text-center">
+                <div className="col">
+                  <div className="p-3">
+                    <i className="bi bi-lightning-charge fs-2 text-primary mb-3"></i>
+                    <h5>Fast & Reliable</h5>
+                    <p className="text-muted small">Shorten URLs instantly with guaranteed uptime</p>
+                  </div>
                 </div>
               </div>
             </div>
-            
+
+
           </div>
         </div>
 
