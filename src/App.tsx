@@ -28,7 +28,7 @@ function App() {
     try {
       setCopied(false);
       setLoading(true);
-      const response = await fetch("http://url-shortener-service.ivansanmartin.svc.cluster.local/api/v1/url-shortener", {
+      const response = await fetch("https://ivsm.link/api/v1/url-shortener", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
