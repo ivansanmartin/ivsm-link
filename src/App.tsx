@@ -28,11 +28,11 @@ function App() {
     try {
       setCopied(false);
       setLoading(true);
-      const response = await fetch(import.meta.env.VITE_URL_SHORTENER_HOST, {
+      const response = await fetch("http://url-shortener-service.ivansanmartin.svc.cluster.local/api/v1/url-shortener", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          "X-API-Key": import.meta.env.VITE_URL_SHORTENER_API_KEY
+          "X-API-Key": "key_1DemacIxkQ_1da8OnopRN-_Y4lqBnOzEEQ2PFJwaR0g"
         },
         body: JSON.stringify({ "original_url": inputValue })
       });
@@ -65,7 +65,7 @@ function App() {
             
             <div className="text-center mb-5">
               <h1 className="display-4 fw-bold text-primary">Ivsm-Link | URL-Shortener</h1>
-              <p className="lead text-muted">Shorten your links in seconds TEST URL: {import.meta.env.VITE_URL_SHORTENER_HOST}</p>
+              <p className="lead text-muted">Shorten your links in seconds</p>
             </div>
             
             <div className="card shadow-sm border-0 rounded-4">
