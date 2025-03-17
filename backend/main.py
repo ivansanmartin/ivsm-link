@@ -1,13 +1,13 @@
-from fastapi import FastAPI, Request, status
-from fastapi.exceptions import RequestValidationError
-from fastapi.responses import JSONResponse
+from fastapi import FastAPI, status
 from fastapi.middleware.cors import CORSMiddleware
+from .routers.api import router as url_shortener_router
 
 
 app = FastAPI()
 
 origins = [
     "https://ivsm.link",
+    "http://localhost:5173"
 ]
 
 app.add_middleware(
@@ -17,3 +17,5 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+app.include_router(url_shortener_router, prefix='/api')

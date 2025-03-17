@@ -28,7 +28,7 @@ function App() {
     try {
       setCopied(false);
       setLoading(true);
-      const response = await fetch("", {
+      const response = await fetch("https://ivsm.link/api/url-shortener", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
