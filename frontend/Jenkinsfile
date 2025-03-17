@@ -82,7 +82,7 @@ pipeline {
         container(name: 'kaniko', shell: '/busybox/sh') {
           sh '''#!/busybox/sh
             /kaniko/executor \
-              --dockerfile `pwd`/Dockerfile \
+              --dockerfile `pwd`/frontend/Dockerfile \
               --context `pwd` \
               --destination=${HARBOR_REGISTRY}/${HARBOR_PROJECT}/${APP_NAME}:${IMAGE_TAG} \
               --destination=${HARBOR_REGISTRY}/${HARBOR_PROJECT}/${APP_NAME}:latest \
