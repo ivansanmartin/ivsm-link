@@ -39,7 +39,7 @@ pipeline {
     IMAGE_NAME = "${HARBOR_REGISTRY}/${HARBOR_PROJECT}/${APP_NAME}"
     IMAGE_TAG = "${RELEASE}-${BUILD_NUMBER}"
     GIT_URL = "https://github.com/ivansanmartin/ivsm-link"
-    HELM_CHART_PATH = "./k8s"
+    HELM_CHART_PATH = "frontend/k8s"
     NAMESPACE = "ivansanmartin"
     RELEASE_NAME = "ivsm-link"
   }
