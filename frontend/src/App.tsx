@@ -28,20 +28,20 @@ function App() {
     try {
       setCopied(false);
       setLoading(true);
-      // const response = await fetch("", {
-      //   method: "POST",
-      //   headers: {
-      //     "Content-Type": "application/json",
-      //   },
-      //   body: JSON.stringify({ "original_url": inputValue })
-      // });
+      const response = await fetch("", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ "original_url": inputValue })
+      });
   
-      // if (!response.ok) {
-      //   throw new Error("Error en la solicitud");
-      // }
+      if (!response.ok) {
+        throw new Error("Error en la solicitud");
+      }
   
-      // const data = await response.json();
-      // setResponseApi(data);
+      const data = await response.json();
+      setResponseApi(data);
       setLoading(false);
 
     } catch (error) {
