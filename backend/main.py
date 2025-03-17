@@ -7,7 +7,6 @@ app = FastAPI()
 
 origins = [
     "https://ivsm.link",
-    "http://localhost:5173"
 ]
 
 app.add_middleware(
