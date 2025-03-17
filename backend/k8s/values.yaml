@@ -1,0 +1,34 @@
+replicaCount: 1
+
+image:
+  repository: 192.168.1.200:30002/ivansanmartin/ivsm-link-backend
+  pullPolicy: IfNotPresent
+  tag: "latest"
+
+nameOverride: "ivsm-link-backend"
+fullnameOverride: "ivsm-link-backend"
+
+namespace: ivansanmartin
+
+resources:
+  limits:
+    cpu: 200m
+    memory: 64Mi
+  requests:
+    cpu: 100m
+    memory: 32Mi
+
+secretRef:
+  - secretRef:
+      name: ivsm-link-backend-secret
+
+service:
+  type: ClusterIP
+  port: 8080
+  targetPort: 8080
+
+securityContext:
+  runAsUser: 0
+
+labels:
+  app: ivsm-link-backend
