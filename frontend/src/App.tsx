@@ -89,7 +89,7 @@ function App() {
                     </div>
                   </div>
                   <div className="d-grid">
-                    <button type="submit" className="btn btn-primary btn-lg rounded-3">
+                    <button type="submit" className="btn btn-primary btn-lg rounded-3" disabled={isLoading && true}>
                       Shorten
                     </button>
 
@@ -122,8 +122,8 @@ function App() {
                 <div className="card-body p-4">
                   <h5 className="card-title mb-3">Your shortened link</h5>
                   <div className="input-group mb-3">
-                    <input type="text" className="form-control bg-light" id="shortUrl" readOnly value={responseApi?.data?.short_url} />
-                    <button className="btn btn-outline-primary" onClick={onClickCopyButton} type="button" id="copyButton">
+                    <input type="text" className="form-control bg-light" id="shortUrl" readOnly value={"https://" + responseApi?.data?.short_url} />
+                    <button className="btn btn-outline-primary" onClick={onClickCopyButton} type="button" id="copyButton" disabled={isCopied && true}>
                       {
                         isCopied ? (
                           "Copied"
